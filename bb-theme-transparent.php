@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Transparent Header
+ * Plugin Name: Beaverlodge Transparent Header
  * Plugin URI: https://beaverlodgehq.com
  * Description: The easiest way to add a transparent header to the Beaver Builder theme.
  * Author: Beaverlodge HQ
