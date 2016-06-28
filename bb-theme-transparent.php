@@ -3,15 +3,15 @@
  * Plugin Name: Transparent Header
  * Plugin URI: https://beaverlodgehq.com
  * Description: The easiest way to add a transparent header to the Beaver Builder theme.
- * Author: Pippin Williamson and Company
+ * Author: Beaverlodge HQ
  * Author URI: https://beaverlodgehq.com
- * Version: 1.0.0
+ * Version: 1.0.1
  */
 
 function bb_transp_scripts() {
 
 	wp_enqueue_script( 'jquery' );	
-	wp_enqueue_script( 'bb-theme-transparent', plugins_url( '/bb-theme-transparent.js' , __FILE__ ), array( 'scriptaculous' ) );	
+	wp_enqueue_script( 'bb-theme-transparent', plugins_url( '/bb-theme-transparent.js' , __FILE__ ), array( 'jquery' ) );	
 	wp_enqueue_style( 'bb-theme-transparent', plugins_url( '/bb-theme-transparent.css' , __FILE__ ) );
 
 }
@@ -44,39 +44,41 @@ function bb_transp_styles_method() {
 		$rgb = hextorgb($background);
 		$rgba = $rgb[0] . ',' . $rgb[1] . ',' . $rgb[2] . ',' . $opacity;
 		if ($global == true) {
-        $custom_css = "
-		
-                .navbar-transparent {
-				  padding-top: 25px !important;
-				}
+            $custom_css = "
 
-				.navbar-transparent {
-					padding-top: 10px !important;
-					border-radius: 0 !important;
-				  }
+                    .navbar-transparent {
+                      padding-top: 25px !important;
+                    }
 
-				.navbar-absolute {
-				  position: absolute !important;
-				  width: 100% !important;
-				  padding-top: 10px !important;
-				  z-index: 1029 !important;
-				}
+                    .navbar-transparent {
+                        padding-top: 10px !important;
+                        border-radius: 0 !important;
+                      }
 
-				.fl-page-header-wrap,
-				.fl-page-nav-right .fl-page-header-wrap {
-					border-bottom: none !important;
-				}
+                    .navbar-absolute {
+                      position: absolute !important;
+                      width: 100% !important;
+                      padding-top: 10px !important;
+                      z-index: 1029 !important;
+                    }
 
-				.fl-page-nav-wrap,
-				.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-					border: none !important;
-				}
-				.home .navbar-transparent {
-				background-color: rgba({$rgba}) !important;
-				}
+                    .fl-page-header-wrap,
+                    .fl-page-nav-right .fl-page-header-wrap {
+                        border-bottom: none !important;
+                    }
 
-		";
-		}
+                    .fl-page-nav-wrap,
+                    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+                        border: none !important;
+                    }
+                    .home .navbar-transparent {
+                    background-color: rgba({$rgba}) !important;
+                    }
+
+            ";
+		} else { 
+            $custom_css = ""; 
+        }
         wp_add_inline_style( 'bb-theme-transparent', $custom_css );
 		
 }
